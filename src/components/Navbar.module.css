@@ -1,0 +1,16 @@
+.navbar{
+    box-shadow: 2px 1px 3px rgb(146, 143, 143);
+    color: black;
+}
+.brand{
+    font-weight: 700;
+    color: black;
+}
+.signupDiv{
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+}
+.item{
+    border-radius: 5px;
+}

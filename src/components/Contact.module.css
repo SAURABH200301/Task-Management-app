@@ -1,0 +1,55 @@
+.main{
+    margin: 10px;
+    padding: 40px;
+    width: 70%;
+}
+.header{
+    display: flex;
+    flex-direction: column;
+}
+.header h2{
+    display: flex;
+    justify-content: center;
+}
+.header div{
+    display: flex;
+    justify-content: space-around;
+}
+.img{   
+    height: 20vw;
+}
+.contacts{
+    margin-top: 20px;
+    padding: 20px;
+    align-items: center;
+}
+.context{
+    display: flex;
+    /* justify-content: space-around; */
+}
+.contextHead{
+    font-weight: 900;
+    font-size: large;
+    margin-right: 20px;
+}
+.content{
+    font-size: medium;
+    font-weight: 600;
+}
+.icons{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+.icon{
+    font-size: 50px;
+    padding: 5px;
+    margin-left: 5px;
+    text-decoration: none;
+    color: black;
+}
+.icon:hover{
+    padding: 10px;
+    border-radius: 20px;
+    /* box-shadow: 1px 1px 2px black; */
+}

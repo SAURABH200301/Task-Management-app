@@ -1,0 +1,27 @@
+.login{
+    padding: 12px 12px 12px 12px;
+    margin-right: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-weight: 700;
+    box-shadow: 1px 1px 2px black;
+    background-color: black;
+    color: white;
+}
+.login:hover{
+    background-color: black;
+    color: white;
+}
+.btn{
+    background-color: black;
+    color: white;
+    font-weight: 500;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+}
+.divider{
+    border: 1px solid black;
+}

@@ -1,0 +1,47 @@
+h1{
+    font-size: 5vw;
+}
+.h2{
+    font-size: 2vw;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.innerDiv{
+    align-items: center;
+}
+
+.buttonDiv{
+    padding: 10px;
+    display: flex;
+    justify-content: right;
+}
+.heroPix{
+    height: 50vw;
+}
+.heroDiv{
+    display: flex;
+    justify-content: space-around;
+}
+
+.contact{
+    display: flex;
+    justify-content: center;
+}
+.button{
+    background-color: black;
+    color: white;
+    padding: 15px 12px 15px 12px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px black;
+    font-weight: 700;
+}
+.button:hover{
+    background-color: rgb(221, 218, 215);
+    color: black;
+}
