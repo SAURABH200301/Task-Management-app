@@ -22,7 +22,7 @@ const NoteNavbar = () => {
         <div className={classes.closebtn} onClick={closeNav}>
           &times;
         </div>
-        <Link to="/">Dashboard</Link>
+        <Link to="/">Home</Link>
         <Link to="/">Grades</Link>
         <Link to="/" onClick={logoutHandler}>Logout</Link>
       </div>

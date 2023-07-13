@@ -1,3 +1,7 @@
+.wave{
+    height: 50px;
+    margin-left:10px;
+}
 .date{
     width: 20%;
     padding: 20px;
@@ -10,15 +14,56 @@
     font-size: 2vw;
 }
 .input{
-    width: 100%;
+    width: auto;
     outline: none;
     text-decoration: none;
     border: none;
-    padding: 10px;
-    box-shadow: 0px 0px 4px rgb(75, 74, 74);
-    border-radius: 20px;
+    padding: 0px 5px 0px 5px;
+    /* box-shadow: 0px 0px 4px rgb(75, 74, 74); */
+    border-radius: 10px;
 }
 .dueDate{
     padding: 20px;
-    width: 20%;
+    width: auto;
+}
+.btnDiv{
+    padding: 10px;
+    width: 100%;
+}
+.btnDiv button{
+    padding: 10px;
+    font-weight: 600;
+    margin-left: 5px;
+}
+.btnDiv button:hover{
+    background-color: rgb(191, 188, 188);
+    color: black;
+}
+.dropdown{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    margin: 10px;
+}
+.default{
+    width: 100%;
+    display: flex;
+    flex-direction: right;
+    font-size: x-small;
+    color: gray;
+    padding-left: 10px;
+}
+.items{
+    width: 150px;
+    text-transform: capitalize;
+}
+.notActive{
+    
+    background-color: black;
+    color: white;
+}
+.active{
+    background-color: white;
+    border-bottom: 1px solid black;
+    color: black;
 }

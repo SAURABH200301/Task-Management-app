@@ -61,7 +61,7 @@ const SignupModal = (prop) => {
       <Modal open={open} onClose={handleClose} className={classes.modal}>
         <Modal.Header>
           <Modal.Title className="d-flex justify-content-center fw-bolder">
-            Get started with Tasky
+            <h2>Get started with Tasky</h2>
           </Modal.Title>
           <div className={classes.divider}></div>
         </Modal.Header>

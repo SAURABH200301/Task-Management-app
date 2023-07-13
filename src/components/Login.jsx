@@ -57,11 +57,13 @@ const LoginModal = () => {
 
       <Modal open={open} onClose={handleClose}>
         <Modal.Header>
-          <Modal.Title className={classes.title}>Login</Modal.Title>
+          <Modal.Title className={classes.title}>
+            <h2>Login</h2>
+          </Modal.Title>
           <div className={classes.divider}></div>
         </Modal.Header>
         <Modal.Body>
-          <Form layout="horizontal">
+          <Form layout="horizontal" className="pt-3">
             <Form.Group controlId="email-6">
               <Form.ControlLabel className="fw-bold">Email</Form.ControlLabel>
               <Form.Control
