@@ -7,9 +7,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* <MainNavbar /> */}
-          <Route exact path="/" Component={Hero} />
-        <Route exact path="/home" Component={Home} />
+        <Route exact path="/" Component={Hero} />
+        <Route exact path="/home/*" Component={Home} />
       </Routes>
     </Router>
   );

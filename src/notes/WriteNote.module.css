@@ -5,6 +5,7 @@ textarea{
     outline: none;
     border-radius: 5px;
     font-size: large;
+    padding: 10px;
 }
 .saveDiv{
     margin: 10px;

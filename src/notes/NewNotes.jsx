@@ -10,7 +10,7 @@ function NewNotes() {
   useEffect(() => {
     buttonRef.current.click();
   },[]);
-  const text = "<h1>Hello</h1>";
+  const text = "<h2>Hello</h2>";
   return (
     <div>
       <ButtonToolbar>
@@ -23,7 +23,7 @@ function NewNotes() {
       <Modal open={open} onClose={handleClose}>
         <Modal.Header>
           <Modal.Title>
-            <h3>Hey There, Welcome to Tasky </h3>
+            <h2>Hey There, Welcome to Tasky </h2>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -37,7 +37,7 @@ function NewNotes() {
             <p>
               You can use HTML tags to modify your content.
               <br></br>
-              For Example: {text} <h1>Hello</h1>
+              For Example: {text} <h2>Hello</h2>
             </p>
             <p>
               There are other tags like h1,h2,h3,h4,h5 for heading<br></br>p tag
