@@ -6,3 +6,9 @@
     display: flex;
     justify-content: center;
 }
+.nothing{
+    height: 400px;
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+}

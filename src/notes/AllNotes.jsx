@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import classes from "./AllNotes.module.css";
 import { Dropdown } from "rsuite";
 import NoteBubble from "./NoteBubble";
+import nothing from "../assets/nothing.jpg";
 
 function AllNotes() {
   const [task, setTask] = useState([]);
@@ -10,6 +11,7 @@ function AllNotes() {
   const [completed, setCompleted] = useState([]);
   const [taskDisplay, setTaskDisplay] = useState([]);
   const [selectedItem, setSelectedItem] = useState("Select the status");
+  const [dataPresent, setDataPresent] = useState(true);
 
   const handleSelect = (eventKey) => {
     setSelectedItem(eventKey);
@@ -45,6 +47,9 @@ function AllNotes() {
       );
       const resp = await response.json();
       setTask(resp.tasks);
+      if (resp.tasks.length === 0) {
+        setDataPresent(false);
+      }
       const sortedTasks = resp.tasks.sort(
         (a, b) => new Date(a.dueDate) - new Date(b.dueDate)
       );
@@ -74,7 +79,7 @@ function AllNotes() {
   };
 
   return (
-    <div className={` ${classes.main}`}>
+    <div className={` ${classes.main} pt-3`}>
       <div>
         <h2>Your All Notes at one place</h2>
       </div>
@@ -95,7 +100,21 @@ function AllNotes() {
           <Dropdown.Item eventKey="completed">Completed</Dropdown.Item>
         </Dropdown>
       </div>
-      <div className="d-flex flex-column">
+      <div className="d-flex flex-column mt-5">
+        {!dataPresent && (
+          <div className="d-flex flex-column">
+            <div className="d-flex justify-content-center ">
+              <h3>Try a Note</h3>
+            </div>
+            <div>
+              <img
+                className={classes.nothing}
+                src={nothing}
+                alt="not file found"
+              />
+            </div>
+          </div>
+        )}
         {taskDisplay &&
           taskDisplay.map((t) => {
             return (
