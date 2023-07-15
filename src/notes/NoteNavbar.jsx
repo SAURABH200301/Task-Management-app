@@ -1,7 +1,7 @@
 import "./NoteNavbar.css";
 import { Link, useNavigate } from "react-router-dom";
-// import menu from "../assets/burger.png";
 import { useEffect, useState } from "react";
+import ViewNotes from "./ViewNotes";
 
 const NoteNavbar = () => {
   const Navigate = useNavigate();
@@ -63,19 +63,20 @@ const NoteNavbar = () => {
             </div>
             <ul className="sub-menu">
               <li>
-                <Link className="link_name" to="/home/notes">
+                <Link className="link_name d-flex justify-content-center" to="/home/notes">
                   Notes
                 </Link>
               </li>
               {task &&
                 task.map((t) => {
                   return (
-                    <li key={t._id}>
-                      <Link to={`/${t._id}`}>{t.title}</Link>
+                    <li key={t._id} className="d-flex justify-content-center">
+                      <ViewNotes note={t} isArrow={false}></ViewNotes>
+                      
                     </li>
                   );
                 })}
-              <li>
+              <li className="d-flex justify-content-center">
                 <Link to="/home">+</Link>
               </li>
             </ul>

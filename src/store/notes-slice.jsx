@@ -7,7 +7,7 @@ const notesSlice = createSlice({
   initialState: {
     notes: notes,
     title: '',
-    status: 'todo',
+    status: '',
     dueDate: '',
     // startDate:'' mongodb will take it self
   },

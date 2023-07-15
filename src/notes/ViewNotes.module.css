@@ -1,0 +1,28 @@
+.btn{
+    background-color: black;
+    color: white;
+}
+.arrowBtn{
+    padding: 0;
+    background-color: transparent;
+}
+.btn:hover{
+    background-color: black;
+    color: white;
+}
+.arrow{
+    height: 25px;
+    border-radius: 20px;
+    border: 1px solid white;
+}
+
+.items{
+    /* width: 150px; */
+    text-transform: capitalize;
+}
+.notArrow{
+    background-color: #1d1b31;
+}
+.notArrow:hover{
+    background-color: #1d1b31;
+}

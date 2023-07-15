@@ -52,10 +52,12 @@ function Note() {
         notesActions.addTitle({
           title: heading,
         }),
+      );
+      dispatch(
         notesActions.updateStatus({
           status: selectedItem,
         })
-      );
+      )
     }, [dispatch, heading, selectedItem]);
     useEffect(() => {
       fetchUsername();
@@ -90,7 +92,7 @@ function Note() {
         </div>
         <div className=" m-5 px-4 d-flex justify-content-around">
           <div className={` ${classes.date}`}>
-            {date}-{months[month + 1]}-{year}
+            {date}-{months[month ]}-{year}
           </div>
           <div className={classes.Head}>
             <input
@@ -127,9 +129,7 @@ function Note() {
                 trigger="hover"
                 onSelect={handleSelect}
               >
-                <Dropdown.Item className={classes.items} eventKey="todo">
-                  to-do
-                </Dropdown.Item>
+                <Dropdown.Item className={classes.items} eventKey="todo">to-do</Dropdown.Item>
                 <Dropdown.Item eventKey="inProgress">In Progress</Dropdown.Item>
                 <Dropdown.Item eventKey="completed">Completed</Dropdown.Item>
                 <div className={classes.default}>

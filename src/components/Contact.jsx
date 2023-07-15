@@ -3,7 +3,7 @@ import contactMe from "../assets/contact.jpg";
 
 function Contact() {
   return (
-    <div className={`row border ${classes.main}`}>
+    <div className={`row  ${classes.main}`}>
       <div className={` col-md-6 ${classes.header}`}>
         <h2>Contact me</h2>
         <div>

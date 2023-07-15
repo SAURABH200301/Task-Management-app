@@ -4,11 +4,11 @@ import { Dropdown } from "rsuite";
 import NoteBubble from "./NoteBubble";
 
 function AllNotes() {
-  const [task, setTask] = useState();
-  const [todoTask, setTodo] = useState();
-  const [inProgress, setInProgress] = useState();
-  const [completed, setCompleted] = useState();
-  const [taskDisplay, setTaskDisplay] = useState(task);
+  const [task, setTask] = useState([]);
+  const [todoTask, setTodo] = useState([]);
+  const [inProgress, setInProgress] = useState([]);
+  const [completed, setCompleted] = useState([]);
+  const [taskDisplay, setTaskDisplay] = useState([]);
   const [selectedItem, setSelectedItem] = useState("Select the status");
 
   const handleSelect = (eventKey) => {
@@ -26,9 +26,11 @@ function AllNotes() {
       setTaskDisplay(task);
     }
   };
+
   useEffect(() => {
     fetchNotes();
-  },[]);
+  }, []);
+
   const fetchNotes = async () => {
     const token = localStorage.getItem("token");
     try {
@@ -43,24 +45,34 @@ function AllNotes() {
       );
       const resp = await response.json();
       setTask(resp.tasks);
-      setTaskDisplay(resp.tasks);
+      const sortedTasks = resp.tasks.sort(
+        (a, b) => new Date(a.dueDate) - new Date(b.dueDate)
+      );
+
+      setTaskDisplay(sortedTasks);
+      fillTodoTask();
+      fillInProgressTask();
+      fillCompletedTask();
     } catch (e) {
       console.log(e);
     }
   };
-  
+
   const fillTodoTask = () => {
     const todoTasks = task.filter((t) => t.status === "todo");
     setTodo(todoTasks);
   };
+
   const fillInProgressTask = () => {
     const inTasks = task.filter((t) => t.status === "inProgress");
     setInProgress(inTasks);
   };
+
   const fillCompletedTask = () => {
     const completedTask = task.filter((t) => t.status === "completed");
     setCompleted(completedTask);
   };
+
   return (
     <div className={` ${classes.main}`}>
       <div>
