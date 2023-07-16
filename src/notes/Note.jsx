@@ -78,8 +78,8 @@ function Note() {
       },
     });
     const data = await res.json();
-    const Name = data.name;
-    setName(Name);
+    const Name = data.name.split(" ");
+    setName(Name[0]);
   }
   return (
     <div>

@@ -2,12 +2,15 @@ import { useState } from "react";
 import { Button, Modal, ButtonToolbar, Form } from "rsuite";
 import classes from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { showAlert } from "../store/alert-slice";
 
 const LoginModal = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -30,14 +33,12 @@ const LoginModal = () => {
     });
     const json = await response.json();
     if (json.success) {
-      //redirect
       localStorage.setItem("token", json.authtoken);
       navigate("/home");
+      dispatch(showAlert("This is an alert message."));
       console.log("success login");
-      // props.showAlert("Login Successfully", "success");
     } else {
       console.log("invalid ");
-      // props.showAlert("Invalid Credientials", "danger");
     }
     setUserData({
       email: "",

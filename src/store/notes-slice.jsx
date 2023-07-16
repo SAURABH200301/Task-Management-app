@@ -1,14 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-const notes ='';
+const notes = "";
 
 const notesSlice = createSlice({
-  name: 'notes',
+  name: "notes",
   initialState: {
     notes: notes,
-    title: '',
-    status: '',
-    dueDate: '',
+    title: "",
+    status: "",
+    dueDate: "",
   },
   reducers: {
     addTitle(state, action) {
@@ -16,14 +16,13 @@ const notesSlice = createSlice({
     },
     addNotes(state, action) {
       state.notes = action.payload.notes;
-      
     },
     updateStatus(state, action) {
       state.status = action.payload.status;
     },
     addDueDate(state, action) {
       state.dueDate = action.payload.dueDate;
-    },
+    }
   },
 });
 
