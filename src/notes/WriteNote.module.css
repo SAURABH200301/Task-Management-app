@@ -19,6 +19,7 @@ textarea{
 .btn{
     background-color: black;
     color: white;
+    border-radius: 5px;
 }
 .btn:hover{
     color: black;

@@ -9,7 +9,6 @@ const notesSlice = createSlice({
     title: '',
     status: '',
     dueDate: '',
-    // startDate:'' mongodb will take it self
   },
   reducers: {
     addTitle(state, action) {
@@ -24,7 +23,7 @@ const notesSlice = createSlice({
     },
     addDueDate(state, action) {
       state.dueDate = action.payload.dueDate;
-    }
+    },
   },
 });
 

@@ -3,6 +3,7 @@ import classes from "./AllNotes.module.css";
 import { Dropdown } from "rsuite";
 import NoteBubble from "./NoteBubble";
 import nothing from "../assets/nothing.jpg";
+import { fetchNotes } from "../API/NotesAPI";
 
 function AllNotes() {
   const [task, setTask] = useState([]);
@@ -30,38 +31,18 @@ function AllNotes() {
   };
 
   useEffect(() => {
-    fetchNotes();
-  }, []);
-
-  const fetchNotes = async () => {
-    const token = localStorage.getItem("token");
-    try {
-      const response = await fetch(
-        "http://localhost:5000/api/task/fetchtasks",
-        {
-          method: "GET",
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      const resp = await response.json();
-      setTask(resp.tasks);
-      if (resp.tasks.length === 0) {
-        setDataPresent(false);
-      }
-      const sortedTasks = resp.tasks.sort(
-        (a, b) => new Date(a.dueDate) - new Date(b.dueDate)
-      );
-
-      setTaskDisplay(sortedTasks);
+    async function fetching() {
+      const data = await fetchNotes();
+      setTaskDisplay(data.sortedTasks);
+      setTask(data.sortedTasks);
+      setDataPresent(data.DataPresent);
       fillTodoTask();
       fillInProgressTask();
       fillCompletedTask();
-    } catch (e) {
-      console.log(e);
     }
-  };
+    
+    fetching();
+  }, []);
 
   const fillTodoTask = () => {
     const todoTasks = task.filter((t) => t.status === "todo");

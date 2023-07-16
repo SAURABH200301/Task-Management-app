@@ -3,7 +3,6 @@
     border-radius: 10px;
     box-shadow: 2px 2px 4px rgb(52, 52, 52);
     width: 80%;
-    display: flex;
     background-color: #c7c5db;
 }
 .main:hover{
@@ -11,8 +10,6 @@
     background-color: rgb(215, 212, 212);
 }
 .arrowDiv{
-    /* border-radius: 20px;
-    padding: 3px; */
     transition: transform 0.3s ease;
 }
 .arrowDiv:hover{
@@ -21,6 +18,7 @@
 
 .date{
     font-weight: 600;
+    width: 25%;
 }
 .status{
     border-radius: 5px ;
@@ -50,4 +48,22 @@
     background-color: white;
     color: black;
     box-shadow: 0px 0px 2px black;
+}
+
+.deleteItem{
+    padding: 0;
+    background-color: transparent;
+    height: 25px;
+    border: 1px solid white;
+    border-radius: 12px;
+}
+.deletedDiv{
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: transparent; 
+    padding-top: 13px;  
+}
+.deletedDiv:hover{
+    background-color: transparent;
 }

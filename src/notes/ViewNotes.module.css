@@ -26,3 +26,6 @@
 .notArrow:hover{
     background-color: #1d1b31;
 }
+.modal{
+    width: 80%;
+}

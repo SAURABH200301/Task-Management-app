@@ -3,11 +3,12 @@ import DueDate from "./DueDate";
 import classes from "./Note.module.css";
 import WriteNote from "./WriteNote";
 import View from "./View";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { notesActions } from "../store/notes-slice";
 import { Dropdown } from "rsuite";
 import hand from "../assets/wave.png";
 import NewNotes from "./NewNotes";
+import { useParams } from "react-router-dom";
 
 const months = [
   "Jan",
@@ -24,59 +25,65 @@ const months = [
   "Dec",
 ];
 function Note() {
-    const [heading, setHeading] = useState("");
-    const [WriteVisible, setWriteVisible] = useState(true);
-    const [ViewVisible, setViewVisible] = useState(false);
-    const [selectedItem, setSelectedItem] = useState("Select the status");
-    const [name, setName] = useState("");
-    const dispatch = useDispatch();
-  
-    const day = new Date();
-    const date = day.getDate();
-    const month = day.getMonth();
-    const year = day.getFullYear();
-  
-    const handleSelect = (eventKey) => {
-      setSelectedItem(eventKey);
-    };
-    const viewHandler = () => {
-      setWriteVisible(!WriteVisible);
-      setViewVisible(!ViewVisible);
-    };
-  
-    const handleHeadingChange = (event) => {
-      setHeading(event.target.value);
-    };
-    useEffect(() => {
-      dispatch(
-        notesActions.addTitle({
-          title: heading,
-        }),
-      );
-      dispatch(
-        notesActions.updateStatus({
-          status: selectedItem,
-        })
-      )
-    }, [dispatch, heading, selectedItem]);
-    useEffect(() => {
-      fetchUsername();
-    });
-  
-    async function fetchUsername() {
-      const res = await fetch("http://localhost:5000/api/auth/getuser", {
-        method: "POST",
-        headers: {
-          "auth-token": localStorage.getItem("token").toString(),
-        },
-      });
-      const data = await res.json();
-      const Name = data.name;
-      setName(Name);
+  const [heading, setHeading] = useState("");
+  const [WriteVisible, setWriteVisible] = useState(true);
+  const [ViewVisible, setViewVisible] = useState(false);
+  const [selectedItem, setSelectedItem] = useState("Select the status");
+  const [name, setName] = useState("");
+  const dispatch = useDispatch();
+  const head = useSelector((state) => state.notes.title);
+  const currentStatus = useSelector((state) => state.notes.status);
+  const { _id } = useParams();
+  const day = new Date();
+  const date = day.getDate();
+  const month = day.getMonth();
+  const year = day.getFullYear();
+
+  const handleSelect = (eventKey) => {
+    setSelectedItem(eventKey);
+  };
+  const viewHandler = () => {
+    setWriteVisible(!WriteVisible);
+    setViewVisible(!ViewVisible);
+  };
+
+  const handleHeadingChange = (event) => {
+    setHeading(event.target.value);
+  };
+  useEffect(() => {
+    dispatch(
+      notesActions.addTitle({
+        title: heading,
+      })
+    );
+    dispatch(
+      notesActions.updateStatus({
+        status: selectedItem,
+      })
+    );
+  }, [dispatch, heading, selectedItem]);
+  useEffect(() => {
+    fetchUsername();
+    if (_id !== undefined) {
+      setHeading(head);
+      setSelectedItem(currentStatus);
     }
+  }, [currentStatus, head,_id]);
+
+  async function fetchUsername() {
+    const res = await fetch("http://localhost:5000/api/auth/getuser", {
+      method: "POST",
+      headers: {
+        "auth-token": localStorage.getItem("token").toString(),
+      },
+    });
+    const data = await res.json();
+    const Name = data.name;
+    setName(Name);
+  }
   return (
     <div>
-         <div className="">
+      <div className="">
         <div className="px-5 mt-3  d-flex justify-content-end ">
           <div>
             <NewNotes />
@@ -92,7 +99,7 @@ function Note() {
         </div>
         <div className=" m-5 px-4 d-flex justify-content-around">
           <div className={` ${classes.date}`}>
-            {date}-{months[month ]}-{year}
+            {date}-{months[month]}-{year}
           </div>
           <div className={classes.Head}>
             <input
@@ -129,7 +136,9 @@ function Note() {
                 trigger="hover"
                 onSelect={handleSelect}
               >
-                <Dropdown.Item className={classes.items} eventKey="todo">to-do</Dropdown.Item>
+                <Dropdown.Item className={classes.items} eventKey="todo">
+                  to-do
+                </Dropdown.Item>
                 <Dropdown.Item eventKey="inProgress">In Progress</Dropdown.Item>
                 <Dropdown.Item eventKey="completed">Completed</Dropdown.Item>
                 <div className={classes.default}>
@@ -139,13 +148,13 @@ function Note() {
             </div>
           </div>
           <div className="">
-            <WriteNote view={WriteVisible} />
+            <WriteNote view={WriteVisible} taskId={_id} />
             <View view={ViewVisible} />
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Note
+export default Note;

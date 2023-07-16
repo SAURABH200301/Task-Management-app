@@ -2,77 +2,84 @@ import { useEffect, useState } from "react";
 import classes from "./WriteNote.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { notesActions } from "../store/notes-slice";
+import { fetchUsername } from "../API/NotesAPI";
 
 function WriteNote(prop) {
-  const { view } = prop;
+  const { view, taskId } = prop;
   const [inputValue, setInputValue] = useState("");
   const [id, setId] = useState("");
+  const [currentContentPresent, setCurrentContentPresent] = useState(true);
   const dispatch = useDispatch();
   const dueDate = useSelector((state) => state.notes.dueDate);
   const title = useSelector((state) => state.notes.title);
   const status = useSelector((state) => state.notes.status);
-  
+  const currentContent = useSelector((state) => state.notes.notes);
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
+
   useEffect(() => {
     setTimeout(() => {
       dispatch(
         notesActions.addNotes({
-          notes: inputValue ,
+          notes: inputValue,
         })
       );
-    },5000);
+    }, 5000);
   }, [dispatch, inputValue]);
 
   useEffect(() => {
-    fetchUsername();
-  });
+    async function fetchUser() {
+      const userId = await fetchUsername();
+      setId(userId);
+    }
+    if (currentContent && currentContentPresent && taskId!==undefined) {
+      setInputValue(currentContent);
+      setCurrentContentPresent(false);
+    }
+    fetchUser();
+  }, [currentContent, currentContentPresent,taskId]);
 
-  async function fetchUsername() {
-    const res = await fetch("http://localhost:5000/api/auth/getuser", {
-      method: "POST",
-      headers: {
-        "auth-token": localStorage.getItem("token").toString(),
-      },
-    });
-    const data = await res.json();
-    const Id = data._id;
-    setId(Id);
-  }
   const saveNotes = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/task/createtask",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            title: title,
-            description: inputValue,
-            status: status,
-            dueDate: dueDate,
-            createdBy: id,
-          }),
-        }
-      );
-      const resp = await response.json();
-      console.log(resp);
-    } catch (e) {
-      console.log(e);
+        const response = await fetch(
+          "http://localhost:5000/api/task/tasks",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "taskId": taskId,
+              "authorization" : localStorage.getItem("token"), 
+            },
+            body: JSON.stringify({
+              title: title,
+              description: inputValue,
+              status: status,
+              dueDate: dueDate,
+              createdBy: id,
+            }),
+          }
+        );
+        response.json();
+        alert("Note Created");
+    } catch (error) {
+      console.log(error);
     }
   };
+
   const saveHandler = () => {
     if (inputValue === "") {
-      alert("Please Write the note here");
+      alert("Please Enter notes >5 letters");
+      
       return;
     }
     saveNotes();
+    setInputValue("");
   };
+
   const Placeholder =
-    "You can use HTML tags to modifiy the notes like <h1>hello</h1> For heading";
+    "You can use HTML tags to modify the notes like <h1>hello</h1> for a heading";
+
   return (
     <div>
       {view && (
