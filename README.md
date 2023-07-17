@@ -1,6 +1,6 @@
 **Tasky is a Task Management application** It gives users to save, delete, update, and create there day to day tasks. 
 <br>
-<video src="Tasky-task%20management%20app.mp4" controls title="Title"></video>
+![Alt text](<Tasky-task management app.gif>)
 <br>
 *Key features:*\
 User Registration and Authentication: \
