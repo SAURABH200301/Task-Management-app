@@ -27,7 +27,7 @@ The application is Responsive on desktop and mobile also.
 2: CORS is used to allow web browsers to make requests to different domains\
 3: dotenv: to store the URL of mongoDB for .env file\
 4: express: It simplifies web development by providing easy routing, middleware handling, and HTTP request/response management.\
-5:  Express Validator is a middleware library for Express.js that provides a set of validation\ 
+5:  Express Validator is a middleware library for Express.js that provides a set of validation.\ 
 6:  jsonwebtoken: to create the token using a code and password\
 7:  MongoDB and Mongoose: for MongoDB\ 
 8: Nodemon: is devDependencies to run the server\
