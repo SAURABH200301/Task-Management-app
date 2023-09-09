@@ -4,8 +4,10 @@
 <br>
 
 <h3>Updated </h3>
-<br>
-![Alt text](<Updated_task_app.gif>)
+<be>
+  
+![Updated_task_app](https://github.com/SAURABH200301/Task-Management-app/assets/80611268/47f987ce-a348-49cb-91dc-076294dc93a4)
+  
 <br>
 *Key features:*\
 User Registration and Authentication: \
