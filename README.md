@@ -5,7 +5,7 @@
 
 <h3>Updated </h3>
 <br>
-![Alt text](<updated tasky app-1.gif>)
+![Alt text](<Updated_task_app.gif>)
 <br>
 *Key features:*\
 User Registration and Authentication: \
