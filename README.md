@@ -2,6 +2,11 @@
 <br>
 ![Alt text](<Tasky-task management app.gif>)
 <br>
+
+<h3>Updated </h3>
+<br>
+![Alt text](<updated tasky app.gif>)
+<br>
 *Key features:*\
 User Registration and Authentication: \
 Users typically need to create an account and log in to access the chat application, ensuring secure and personalized communication. Users can use Facebook or Google accounts to access the application.
