@@ -60,6 +60,7 @@ function WriteNote(prop) {
             }),
           }
         );
+        // console.log(response)
         response.json();
         alert("Note Created");
     } catch (error) {

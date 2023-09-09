@@ -10,13 +10,7 @@ const authMiddleware = require('../middleware/authMiddleware');
 
 router.post('/tasks', [
   body('title', 'Enter the title').isLength({ min: 5 }),
-  body('description', 'Enter valid description').isLength({ min: 10 }),
-  body('dueDate').custom((value) => {
-    if (!value || new Date(value) <= Date.now()) {
-      throw new Error('Enter a valid due date in the future');
-    }
-    return true;
-  })
+  body('description', 'Enter valid description').isLength({ min: 10 })
 ], authMiddleware, async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {

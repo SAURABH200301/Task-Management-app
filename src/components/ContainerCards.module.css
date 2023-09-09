@@ -1,0 +1,31 @@
+.layoutCards {
+    box-shadow: 0px 0px 2px black;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    transition: all .3s linear;
+  }
+  
+  .layoutCards>p {
+    border-radius: 5px;
+    background-color: #020011;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+  .layoutDragging {
+    background: white;
+    border: 2px dashed black;
+  }
+
+  @media screen and (max-width: 800px) {
+
+  
+    .layout-cards {
+      overflow-y: scroll;
+      height: 250px;
+      min-height: 150px;
+      max-height: 600px;
+    }
+  }
