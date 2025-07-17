@@ -1,6 +1,6 @@
 **Tasky is a Task Management application** It gives users to save, delete, update, and create there day to day tasks. 
 <br>
-![Alt text](<Tasky-task management app.gif>)
+  ![Alt text](<Tasky-task management app.gif>)
 <br>
 
 <h3>Updated </h3>
@@ -9,6 +9,15 @@
 ![Updated_task_app](https://github.com/SAURABH200301/Task-Management-app/assets/80611268/47f987ce-a348-49cb-91dc-076294dc93a4)
   
 <br>
+
+## Use Cases & Benefits: 
+- Helps individuals or teams track daily tasks, deadlines, and progress. 
+- Improves productivity through priority tags, status updates. 
+- Enables team collaboration and assignment tracking. 
+- Can replace physical to-do lists or inefficient spreadsheets. 
+
+<br>
+
 *Key features:*\
 User Registration and Authentication: \
 Users typically need to create an account and log in to access the chat application, ensuring secure and personalized communication. Users can use Facebook or Google accounts to access the application.
